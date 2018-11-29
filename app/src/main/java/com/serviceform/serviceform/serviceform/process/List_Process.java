@@ -7,11 +7,14 @@ import com.jcraft.jsch.Session;
 import com.jcraft.jsch.UserInfo;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class List_Process {
 
     public static String listOfProcess = "";
     public static String userName="", hostServer="";
+    public static List<String> result = new ArrayList<>();
 
     public void lista(){
         try{
@@ -55,6 +58,7 @@ public class List_Process {
                     int i=in.read(tmp, 0, 1024);
                     if(i<0)break;
                     listOfProcess += new String(tmp, 0, i);
+                    result.add(listOfProcess);
                     System.out.print(new String(tmp, 0, i));
                 }
                 if(channel.isClosed()){

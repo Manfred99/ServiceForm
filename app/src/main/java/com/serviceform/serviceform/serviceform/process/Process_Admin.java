@@ -35,8 +35,13 @@ public class Process_Admin extends Activity {
             @Override
             protected Void doInBackground(Integer... params) {
                 try {
+
                     List_Process list = new List_Process();
                     list.lista();
+
+                    while(list.result.size()==0){
+                        list.lista();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
